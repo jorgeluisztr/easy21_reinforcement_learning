@@ -15,7 +15,7 @@ class easy21():
         return self.playersum, self.dealerobserved
 
     def hit(self):
-        if np.random.choice(self.color) > 3:
+        if np.random.choice(self.color) < 3:
             return np.random.choice(self.deck)
         else:
             return -np.random.choice(self.deck)
@@ -40,7 +40,7 @@ class easy21():
                     return self.state(), 1
                 else:
                     if self.dealersum < 17:
-                        self.dealersum = self.hit()
+                        self.dealersum = self.dealersum + self.hit()
                     if self.dealersum > 16 and self.dealersum < 22:
                         if self.dealersum < self.playersum:
                             self.is_game_end()
